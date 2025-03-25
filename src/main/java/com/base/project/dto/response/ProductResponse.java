@@ -1,4 +1,4 @@
-package com.base.project.dto;
+package com.base.project.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,4 +18,6 @@ public class ProductResponse {
     private String productDescription;
 
     private Float productPrice;
+
+    private String productCategory;
 }

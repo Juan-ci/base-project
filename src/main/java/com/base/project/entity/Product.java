@@ -24,4 +24,7 @@ public class Product {
 
     @Column(name = "PRODUCT_PRICE")
     private Float productPrice;
+
+    @Column(name = "PRODUCT_CATEGORY")
+    private String productCategory;
 }

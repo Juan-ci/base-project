@@ -34,9 +34,9 @@ public class UserServiceImpl implements IUserService {
     public UserResponse registerUser(UserRequest userRequest) {
         User userEntity = userRepository.save(
                 User.builder()
-                        .role(userRequest.getRole())
+                        .role(userRequest.getRol())
                         .username(userRequest.getUsername())
-                        .password(passwordEncoder.encode(userRequest.getPassword()))
+                        .password(passwordEncoder.encode(userRequest.getContrasena()))
                 .build()
         );
 
@@ -51,7 +51,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public String verifyLogin(UserRequest user) {
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
+                new UsernamePasswordAuthenticationToken(user.getUsername(), user.getContrasena())
         );
 
         if (authentication.isAuthenticated()) {

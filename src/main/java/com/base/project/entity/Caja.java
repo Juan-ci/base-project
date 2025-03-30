@@ -12,7 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
+@Entity(name = "CAJA")
 public class Caja {
 
     @Id

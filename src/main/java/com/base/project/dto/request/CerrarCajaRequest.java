@@ -11,7 +11,7 @@ public class CerrarCajaRequest {
 
     private Long idLocal;
 
-    private int numeroSalon;
+    private String numeroSalon;
 
     private String encargado;
 
@@ -19,9 +19,11 @@ public class CerrarCajaRequest {
 
     private Date horaCierre;
 
-    private Double dinero;
+    private Double dineroRecaudado;
 
     private String dia;
 
     private String mes;
+
+    private Date horasTrabajadas;
 }

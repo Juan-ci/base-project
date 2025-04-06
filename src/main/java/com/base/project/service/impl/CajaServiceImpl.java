@@ -1,6 +1,6 @@
 package com.base.project.service.impl;
 
-import com.base.project.dto.request.CerrarCajaRequest;
+import com.base.project.dto.request.CajaRequest;
 import com.base.project.dto.response.CajaResponse;
 import com.base.project.entity.Caja;
 import com.base.project.repository.ICajaRepository;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CajaServiceImpl implements ICajaService {
 
-    private ICajaRepository cajaRepository;
+    private final ICajaRepository cajaRepository;
 
     @Autowired
     public CajaServiceImpl(ICajaRepository cajaRepository) {
@@ -19,13 +19,20 @@ public class CajaServiceImpl implements ICajaService {
     }
 
     @Override
-    public CajaResponse cerrarCaja(CerrarCajaRequest cajaRequest) {
-        boolean existCaja = cajaRepository.existsById(cajaRequest.getIdCaja());
+    public CajaResponse abrirCaja(CajaRequest cajaRequest) {
+        Caja cajaEntity = this.cajaRepository.save(this.requestToEntity(cajaRequest));
+
+        return this.entityToResponse(cajaEntity);
+    }
+
+    @Override
+    public CajaResponse cerrarCaja(CajaRequest cajaRequest) {
+        boolean existCaja = this.cajaRepository.existsById(cajaRequest.getIdCaja());
 
         if (existCaja) {
             Caja cajaEntity = this.requestToEntity(cajaRequest);
 
-            cajaRepository.save(cajaEntity);
+            this.cajaRepository.save(cajaEntity);
 
             return this.entityToResponse(cajaEntity);
         }
@@ -33,7 +40,7 @@ public class CajaServiceImpl implements ICajaService {
         return null;
     }
 
-    private Caja requestToEntity(CerrarCajaRequest cajaRequest) {
+    private Caja requestToEntity(CajaRequest cajaRequest) {
         return Caja.builder()
                 .idCaja(cajaRequest.getIdCaja())
                 .idLocal(cajaRequest.getIdLocal())

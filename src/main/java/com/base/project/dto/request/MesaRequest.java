@@ -8,19 +8,20 @@ import java.util.List;
 
 @Data
 public class MesaRequest {
+
     private Long idMozo;
 
-    private int numeroMesa;
+    private int numeroDeLaMesa;
 
     private Double dineroRecaudadoMesa;
 
     private Long idLocal;
 
-    private int numeroSalon;
+    private int numeroDeSalon;
 
     private List<Product> productos;
 
-    private Long idCaja;
+    private Long cajaId;
 
     private Date fecha;
 }

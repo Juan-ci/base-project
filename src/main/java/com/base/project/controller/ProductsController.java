@@ -33,9 +33,10 @@ public class ProductsController {
         return new ResponseEntity<>(productService.getAllProducts(), HttpStatus.OK);
     }
 
+    //PRODUCTO REQUEST ES DISTINTO A LO QUE ES LA ENTIDAD PRODUCTO
     @PostMapping("/crear")
-    public ResponseEntity<String> createProduct(@RequestBody ProductoRequest productoRequest) {
-        return null;
+    public ResponseEntity<ProductResponse> createProduct(@RequestBody ProductoRequest productoRequest) {
+        return new ResponseEntity<>(this.productService.crearProducto(productoRequest), HttpStatus.OK);
     }
 
     @PutMapping("/editar/{idLocal}/{idProducto}")

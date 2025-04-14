@@ -35,6 +35,6 @@ public class MenuOnlineController {
 
     @GetMapping("/productos/{nombreLocal}")
     public ResponseEntity<List<ProductoMenuOnlineResponse>> getProductosByLocal(@PathVariable("nombreLocal") String nombreLocal) {
-        return null;
+        return new ResponseEntity<>(this.menuOnlineService.getProductosMenuOnline(nombreLocal), HttpStatus.OK);
     }
 }

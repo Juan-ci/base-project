@@ -1,5 +1,6 @@
 package com.base.project.service.impl;
 
+import com.base.project.dto.request.ProductoRequest;
 import com.base.project.dto.response.ProductResponse;
 import com.base.project.entity.Product;
 import com.base.project.repository.IProductRepository;
@@ -47,5 +48,11 @@ public class ProductServiceImpl implements IProductService {
                         .productPrice(product.getProductPrice())
                         .build())
                 .toList();
+    }
+
+    @Override
+    public ProductResponse crearProducto(ProductoRequest productoRequest) {
+        //agregar el request to entity y guardar
+        return null;
     }
 }

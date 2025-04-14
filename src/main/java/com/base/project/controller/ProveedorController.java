@@ -1,6 +1,8 @@
 package com.base.project.controller;
 
 import com.base.project.dto.request.ProveedorRequest;
+import com.base.project.service.IProveedorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/proveedores")
 public class ProveedorController {
+
+    private final IProveedorService proveedorService;
+
+    @Autowired
+    public ProveedorController(IProveedorService proveedorService) {
+        this.proveedorService = proveedorService;
+    }
 
     @GetMapping("/getAllProveedores")
     public ResponseEntity<String> getAllProveedores(@RequestParam("idLocal") Long idLocal) {
